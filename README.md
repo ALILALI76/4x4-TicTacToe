@@ -1,5 +1,5 @@
 # 4x4-TicTacToe
-4x4 TicTacToe game programmed in Java and JavaScript/HTML
+4x4 TicTacToe game programmed in Vanilla Java and JavaScript/HTML
 
 PLAY TICTACTOE ON A 4X4 SQUARE WITH 2 PLAYERS!
 
