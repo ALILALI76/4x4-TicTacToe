@@ -1,0 +1,187 @@
+* {
+    font-family: 'poppins';
+    font-weight: bold;
+    margin: 0px;
+}
+
+body {
+    background-color: rgb(6, 6, 6);
+    margin: 0;
+    min-height: 100dvh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;      
+    font-family: Arial, sans-serif;
+    padding: 10px;            
+    box-sizing: border-box;
+}
+span{
+    display: inline-block;
+    margin: 15px;
+}
+#spielfeld {
+    display: none;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    border: 5px solid #2c3e50;
+    background-color: #172b3e;
+    border-radius: 10px;
+    grid-auto-columns: 25%;
+    grid-auto-rows: 25%;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+}
+#spielfeld {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#spielfeld {
+    position: relative;
+}
+#spielfeld.visible {
+    display: grid;
+    opacity: 1;
+}
+#spielfeld .square {
+    text-align: center;
+    border: 2px solid #29425b;
+    padding-top: auto;
+    padding-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+}
+#startbutton {
+    width: 400px;
+    height: 200px;
+    border: solid 5px #192530;
+    background-color: #29425b;
+    color: #101921;
+    border-radius: 150px;
+    font-size: 2em;
+    font-weight: 500;
+}
+#startbutton {
+    transition: transform 0.2s ease;
+}
+#buttonWrapper{
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    color: #dedede;
+    text-align: center;
+    font-size: 3em;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.unclicked {
+    color: #29425b ;
+}
+
+.clickedO {
+    color: rgb(28, 251, 20);
+}
+
+.clickedX {
+    color: rgb(255, 29, 29);
+}
+
+.ticked {
+    animation: ticked 0.5s forwards;
+}
+
+@keyframes ticked {
+    0%{font-size: 5em;}
+    10%, 30%{font-size: 6em;}
+    100%{font-size: 4em;}
+}
+
+.highlighted {
+    animation: highlighted 2s cubic-bezier(0.79,-0.11, 0, 1.23) ;
+}
+
+@keyframes highlighted {
+    0% {font-size: 4em;}
+    50% {font-size: 6em;}
+    100% {font-size: 4em;}
+}
+
+
+
+#game-over-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+#game-over-overlay.active {
+    opacity: 1;
+}
+
+#game-over-overlay .message {
+    color: white;
+    text-align: center;
+    font-size: 4em;
+}
+
+.clickbait {
+    animation: clickbait 5s ease infinite;
+}
+
+@keyframes clickbait {
+    0%, 35%, 70%, 100% {
+        transform: scale(1);
+    }
+    50%, 60% {
+        transform: scale(1.1);
+    }
+}
+
+.new {
+    animation: new 1.2s linear(0, 0.0316, 0.1181, 0.2461, 0.4015, 0.5706, 0.7412, 0.9023, 1.0456, 1.1649, 1.2563, 1.3184, 1.3516, 1.3584, 1.342, 1.307, 1.2584, 1.201, 1.1398, 1.079, 1.0224, 0.9728, 0.9323, 0.9019, 0.882, 0.8724, 0.872, 0.8796, 0.8935, 0.9118, 0.9329, 0.955, 0.9765, 0.9964, 1.0135, 1.0272, 1.0372, 1.0435, 1.0461, 1.0455, 1.0422, 1.0368, 1.03, 1.0223, 1.0143, 1.0067, 0.9998, 0.9939, 0.9893, 0.986, 0.9841, 0.9834, 0.9838, 0.9852, 0.9873, 0.9899, 0.9927, 0.9955, 0.9982, 1.0006, 1.0026, 1.0042, 1.0052, 1.0058, 1.006, 1.0057, 1.0051, 1.0044, 1.0034, 1.0024, 1.0014, 1.0004, 0.9996, 0.9989, 0.9984, 0.9981, 0.9979, 0.9979, 0.998, 0.9982, 0.9985, 0.9989, 0.9992, 0.9996, 0.9999, 1.0002, 1.0004, 1.0006, 1.0007, 1.0008, 1.0008, 1.0007, 1.0006, 1.0005, 1.0004, 1.0002, 1.0001, 1, 0.9999, 0.9998, 1) forwards;
+}
+
+@keyframes new {
+    50%{transform: scale(1.5);}
+    0%, 100%{transform: scale(1);}
+}
+
+@media (max-width: 480px) {
+    #heading {
+        font-size: 1.6em;
+    }
+    #startbutton {
+        max-width: 300px;
+        font-size: 1.5em;
+        padding: 8px 16px;
+    }
+    .square {
+        font-size: 3em;
+    }
+    #spielfeld {
+        max-width: 400px;
+        transform:scale(0.8);
+    }
+}
